@@ -7,12 +7,12 @@ from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+API_PROVIDER = os.environ['API_PROVIDER']
+
 app = Flask(__name__)
 CORS(app)
-auth = HTTPBasicAuth()
 
-API_PROVIDER = os.environ['API_PROVIDER']
+load_dotenv()
 
 @app.route('/v1/chat/completions', methods=['POST'])
 def chat():
@@ -35,5 +35,6 @@ def chat():
 
 
 #@app.route('/v1/completions', methods=['POST'])
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

@@ -1,8 +1,6 @@
 flask
 flask-cors
 openllm
-langchain
-Flask-HTTPAuth
 flask-sqlalchemy
 requests
 jq
