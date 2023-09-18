@@ -8,17 +8,33 @@ The Python flask API (the application in this repo) will receive the requests in
 
 How to install and test this project:
 
-```chmod +x selfcert.sh```
+`chmod +x selfcert.sh`
 
-```./selfcert.sh ```
+`./selfcert.sh `
 
 When running selfcert.sh you get asked for where you life etc, you can fill in fake information there.
 Except this question 'Common Name (e.g. server FQDN or YOUR name) []: api.openai.com' fill in api.openai.com like stated in this example.
 
+Now it edit the hosts file in /etc/hosts
 
-Now create a virtual environment, do this by executing
+'sudo vim /etc/hosts'
 
-```python3 -m venv env``` or use conda virtual environments
+And add the following line
+`127.0.0.1 https://api.openai.com`
+
+Now create a virtual environment, do this by executing:
+
+`python3 -m venv env` or use conda virtual environments
+
+Activate the virtual environment
 
 `source env/bin/activate`
+
+Install dependencies
+`pip3 install -r requirements.txt`
+
+Run app.py
+`python3 app.py`
+
+Now you will be able to send post requests to the OpenAI API but will be 
 
