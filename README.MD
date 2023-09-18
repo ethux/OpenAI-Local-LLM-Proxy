@@ -9,6 +9,7 @@ The Python flask API (the application in this repo) will receive the requests in
 How to install and test this project:
 
 ```chmod +x selfcert.sh```
+
 ```./selfcert.sh ```
 
 When running selfcert.sh you get asked for where you life etc, you can fill in fake information there.
