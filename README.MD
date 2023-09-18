@@ -15,3 +15,10 @@ How to install and test this project:
 When running selfcert.sh you get asked for where you life etc, you can fill in fake information there.
 Except this question 'Common Name (e.g. server FQDN or YOUR name) []: api.openai.com' fill in api.openai.com like stated in this example.
 
+
+Now create a virtual environment, do this by executing
+
+```python3 -m venv env``` or use conda virtual environments
+
+`source env/bin/activate`
+
