@@ -1,13 +1,22 @@
 import os
-import openllm
+from langchain.llms import OpenLLM
 from modules.prompt import Prompt
 from dotenv import load_dotenv
 load_dotenv()
+import asyncio
 
-class Pipeline:
-    def chat(messages):
-            output_msg = Prompt.prepare(messages)
-            print(output_msg)
-            client = openllm.client.HTTPClient(os.environ['API_URL'])
-            response = client.query(output_msg)
-            return response
+def chat(messages):
+    url = os.environ['API_URL']
+    output_msg = Prompt.prepare(messages)
+    print(output_msg)
+    output_msg += 'Assistant: '
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    llm = OpenLLM(server_url=url)
+    response = llm(prompt=output_msg)
+    print(response)
+    
+    loop.close()
+    return response

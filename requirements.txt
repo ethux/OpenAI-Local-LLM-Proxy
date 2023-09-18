@@ -6,3 +6,4 @@ requests
 jq
 bs4
 python-dotenv
+langchain
