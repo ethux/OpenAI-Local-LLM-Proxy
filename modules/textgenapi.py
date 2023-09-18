@@ -12,7 +12,7 @@ load_dotenv()
 HOST = os.environ['API_URL']
 URI = f'{HOST}/api/v1/chat'
 
-def pipeline(messages, max_new_tokens=100):
+def pipeline(messages, max_new_tokens=2048):
     output_msg = Prompt.prepare(messages)
     print(output_msg)
 

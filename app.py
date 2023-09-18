@@ -3,7 +3,7 @@ import uuid
 import time
 import os
 from datetime import datetime
-from modules import openllmapi, textgenapi
+from modules import openllmapi, textgenapi, embeddings
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -57,7 +57,13 @@ def chat():
 
 
 
-#@app.route('/v1/embeddings', methods=['POST'])
+@app.route('/v1/embeddings', methods=['POST'])
+def embedding():
+    if not request.json or not 'messages' in request.json:
+        abort(400)
+    sentences = request.json['messages']
+    output = embeddings.embeddings(sentences)
+    return (output)
 
 
 #@app.route('/v1/completions', methods=['POST'])
