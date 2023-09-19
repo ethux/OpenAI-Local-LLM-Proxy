@@ -19,11 +19,12 @@ def chat():
     authorization = request.headers['Authorization']
     messages = request.json['messages']
     model = request.json['model']
+    max_tokens = request.json['tokens']
     
     if API_PROVIDER == 'OpenLLM':
-        response = openllmapi.chat(messages)
+        response = openllmapi.chat(messages, max_tokens)
     elif API_PROVIDER == 'TextGenUI':
-        response = textgenapi.pipeline(messages)
+        response = textgenapi.pipeline(messages, max_tokens)
     else:
         abort(400)
     

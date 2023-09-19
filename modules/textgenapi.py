@@ -14,13 +14,13 @@ load_dotenv()
 HOST = os.environ['API_URL']
 URI = f'{HOST}/api/v1/chat'
 
-def pipeline(messages, max_new_tokens=2048):
-    output_msg = Prompt.prepare(messages)
+def pipeline(messages, max_tokens):
+    output_msg = Prompt.prepare(messages, max_tokens)
     print(output_msg)
 
     request = {
         'user_input': output_msg,
-        'max_new_tokens': max_new_tokens,
+        'max_new_tokens': max_tokens,
         'auto_max_new_tokens': False,
         #'history': history,
         'mode': 'instruct',  # Valid options: 'chat', 'chat-instruct', 'instruct'

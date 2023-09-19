@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import asyncio
 
-def chat(messages):
+def chat(messages, max_tokens):
     url = os.environ['API_URL']
     output_msg = Prompt.prepare(messages)
     print(output_msg)
