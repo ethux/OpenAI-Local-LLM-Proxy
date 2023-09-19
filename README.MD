@@ -15,6 +15,24 @@ How to install and test this project:
 When running selfcert.sh you get asked for where you life etc, you can fill in fake information there.
 Except this question 'Common Name (e.g. server FQDN or YOUR name) []: api.openai.com' fill in api.openai.com like stated in this example.
 
+
+When using python and want to trust those SSL certifcates you have to add this to the request module, don't forget to make a backup of that module.
+edit session.py, in my case I had to add the SSL certificates I trusted by hand.
+
+```cat /etc/ssl/certs/nginx-selfsigned.crt >> /home/ethux/.local/lib/python3.10/site-packages/certifi/cacert.pem```
+
+
+```    def __init__(self):
+        self.verify = '/home/ethux/.local/lib/python3.10/site-packages/certifi/cacert.pem'
+
+
+        #: A case-insensitive dictionary of headers to be sent on each
+        #: :class:`Request <Request>` sent from this
+        #: :class:`Session <Session>`.
+        self.headers = default_headers()
+
+```
+
 Now it edit the hosts file in /etc/hosts
 
 'sudo vim /etc/hosts'

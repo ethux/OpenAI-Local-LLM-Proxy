@@ -3,6 +3,8 @@ import requests
 import os
 from modules.prompt import Prompt
 from dotenv import load_dotenv
+import html
+from flask import json
 
 load_dotenv()
 
@@ -43,7 +45,7 @@ def pipeline(messages, max_new_tokens=2048):
         # in presets/preset-name.yaml are used instead of the individual numbers.
         'preset': 'None',
         'do_sample': True,
-        'temperature': 0.1,
+        'temperature': 0.05,
         'top_p': 0.1,
         'typical_p': 1,
         'epsilon_cutoff': 0,  # In units of 1e-4
@@ -77,11 +79,13 @@ def pipeline(messages, max_new_tokens=2048):
 
     if response.status_code == 200:
         result = response.json()['results'][0]['history']
-        print(json.dumps(result, indent=4))
-        print()
-        print(result['visible'][-1][1])
+        #print(json.dumps(result, indent=4))
+        #print()
+        #print(result['visible'][-1][1])
     else:
-        print(response.status_code)
-        print(response.text)
+        #print(response.status_code)
+        print("done")
     answer = result['visible'][-1][1]
-    return answer
+    answer_unescaped = html.unescape(answer)
+    answer_dict = json.loads(answer_unescaped)
+    return answer_dict
