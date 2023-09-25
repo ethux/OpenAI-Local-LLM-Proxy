@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Step 1: Install Nginx
+#Install Nginx
 sudo apt update
 sudo apt install -y nginx
 
-# Step 2: Create a Self-Signed SSL Certificate
+#Create a Self-Signed SSL Certificate
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
-# Step 3: Configure Nginx to Use the SSL Certificate
+#Configure Nginx to Use the SSL Certificate
 sudo bash -c 'cat > /etc/nginx/sites-available/my_proxies <<EOF
 server {
     listen 443 ssl;
@@ -26,13 +26,13 @@ server {
 }
 EOF'
 
-# Step 4: Enable the Configuration
+#Enable the nginx config
 sudo ln -s /etc/nginx/sites-available/my_proxies /etc/nginx/sites-enabled/
 
-# Step 5: Test the Nginx Configuration
+#Test the nginx config
 sudo nginx -t
 
-# Step 6: Reload Nginx
+#Reload nginx
 if [ $? -eq 0 ]; then
     sudo systemctl reload nginx
 else
@@ -40,9 +40,6 @@ else
     exit 1
 fi
 
-# Step 7: Add the Self-Signed Certificate to Your System's List of Trusted Certificates (Linux)
+#Add the Self-Signed Certificate to Trusted Certificates (Linux)
 sudo cp /etc/ssl/certs/nginx-selfsigned.crt /usr/local/share/ca-certificates/
 sudo update-ca-certificates
-
-# Step 8: Output a message indicating the script has finished
-echo "The setup is complete. Please test the setup by visiting your Nginx proxy in a web browser using HTTPS."
