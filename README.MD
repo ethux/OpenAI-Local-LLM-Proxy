@@ -1,10 +1,11 @@
 **GPT API Interface/Faker** 
 
-This project goal is to test existing projects on Github or you made yourself how they perform with other LLM's.
-We do this by creating a Nginx proxy, self signed certificate and editing the host file of your Linux machine.
-The Python flask API (the application in this repo) will receive the requests instead of the OpenAI API, and will send the request to OpenLLM or Text Generation Webui API.
+The goal of this project is to test existing projects on Github or you made yourself how they perform with other LLM's then the ones provided by OpenAI.
 
+We do this by creating a Nginx proxy, self signed certificate and editing the host file of your Linux machine, all API requests will be proxied to the Python flask API (the application in this repo) and will receive the requests instead of the OpenAI API. 
+The Flask API will then send the API requests to the Text Generation Webui API or OpenLLM API.
 
+**PLEASE NOTE THIS PROJECT IS STILL WORK IN PROGRESS AND NOT ALL FUNCTIONS WILL WORK CORRECTLY**
 
 How to install and test this project:
 
