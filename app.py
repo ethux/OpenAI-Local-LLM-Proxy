@@ -19,12 +19,11 @@ def chat():
     authorization = request.headers['Authorization']
     messages = request.json['messages']
     model = request.json['model']
-    max_tokens = request.json['tokens']
     
     if API_PROVIDER == 'OpenLLM':
-        response = openllmapi.chat(messages, max_tokens)
+        response = openllmapi.chat(messages)
     elif API_PROVIDER == 'TextGenUI':
-        response = textgenapi.pipeline(messages, max_tokens)
+        response = textgenapi.pipeline(messages)
     else:
         abort(400)
     
@@ -73,7 +72,7 @@ def models():
         "object": "list",
         "data": [
             {
-                "id": "gpt-4",
+                "id": "gpt-4-0613",
                 "object": "model",
                 "created": 1687882411,
                 "owned_by": "openai",
@@ -93,7 +92,7 @@ def models():
                         "is_blocking": False
                     }
                 ],
-                "root": "gpt-4",
+                "root": "gpt-4-0613",
                 "parent": None
             },
             {
