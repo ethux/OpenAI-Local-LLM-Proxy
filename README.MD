@@ -23,15 +23,15 @@ edit session.py, in my case I had to add the SSL certificates I trusted by hand.
 ```cat /etc/ssl/certs/nginx-selfsigned.crt >> /home/ethux/.local/lib/python3.10/site-packages/certifi/cacert.pem```
 
 
-```    def __init__(self):
-        self.verify = '/home/ethux/.local/lib/python3.10/site-packages/certifi/cacert.pem'
+```     
+def __init__(self):
+self.verify = '/home/ethux/.local/lib/python3.10/site-packages/certifi/cacert.pem'
 
 
-        #: A case-insensitive dictionary of headers to be sent on each
-        #: :class:`Request <Request>` sent from this
-        #: :class:`Session <Session>`.
-        self.headers = default_headers()
-
+#: A case-insensitive dictionary of headers to be sent on each
+#: :class:`Request <Request>` sent from this
+#: :class:`Session <Session>`.
+self.headers = default_headers()
 ```
 
 Now it edit the hosts file in /etc/hosts
