@@ -1,11 +1,11 @@
-**GPT API Interface/Faker** 
+#OpenAI Local LLM Proxy
 
 The goal of this project is to test existing projects on Github or you made yourself how they perform with other LLM's then the ones provided by OpenAI.
 
 We do this by creating a Nginx proxy, self signed certificate and editing the host file of your Linux machine, all API requests will be proxied to the Python flask API (the application in this repo) and will receive the requests instead of the OpenAI API. 
-The Flask API will then send the API requests to the Text Generation Webui API or OpenLLM API.
+The Flask API will then send the API requests to the Text Generation Webui API or OpenLLM API. One of the few models which will perform well with this project is "FashionGPT v1.1" (fine tuned version of LLaMa-2-70B).
 
-**PLEASE NOTE THIS PROJECT IS STILL WORK IN PROGRESS AND NOT ALL FUNCTIONS WILL WORK CORRECTLY**
+##PLEASE NOTE THIS PROJECT IS STILL WORK IN PROGRESS AND NOT ALL FUNCTIONS WILL WORK CORRECTLY
 
 How to install and test this project:
 
@@ -36,7 +36,7 @@ self.headers = default_headers()
 
 Now it edit the hosts file in /etc/hosts
 
-'sudo vim /etc/hosts'
+`sudo vim /etc/hosts`
 
 And add the following line
 `127.0.0.1 https://api.openai.com`

@@ -16,7 +16,7 @@ load_dotenv()
 
 @app.route('/v1/chat/completions', methods=['POST'])
 def chat():
-    authorization = request.headers['Authorization']
+    authorization = request.headers['Authorization'] #Not used yet
     messages = request.json['messages']
     model = request.json['model']
     
@@ -60,7 +60,7 @@ def embedding():
         abort(400)
     sentences = request.json['messages']
     output = embeddings.embeddings(sentences)
-    return (output)
+    return (output) #Output needs to be changed to right format
 
 
 #@app.route('/v1/completions', methods=['POST'])
@@ -74,13 +74,13 @@ def models():
             {
                 "id": "gpt-4-0613",
                 "object": "model",
-                "created": 1687882411,
+                "created": 0,
                 "owned_by": "openai",
                 "permission": [
                     {
-                        "id": "modelperm-kMXwdWZD1zTr5s2zZhMZMCw0",
+                        "id": "modelperm-0",
                         "object": "model_permission",
-                        "created": 1694740271,
+                        "created": 0,
                         "allow_create_engine": False,
                         "allow_sampling": False,
                         "allow_logprobs": False,
@@ -98,13 +98,13 @@ def models():
             {
                 "id": "gpt-3.5-turbo-0613",
                 "object": "model",
-                "created": 1686587434,
+                "created": 0,
                 "owned_by": "openai",
                 "permission": [
                     {
-                        "id": "modelperm-ggp9dQCTCoTPuAJZqA7Ta1Fk",
+                        "id": "modelperm-0",
                         "object": "model_permission",
-                        "created": 1694726193,
+                        "created": 0,
                         "allow_create_engine": False,
                         "allow_sampling": True,
                         "allow_logprobs": True,

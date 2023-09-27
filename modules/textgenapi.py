@@ -21,7 +21,7 @@ def pipeline(messages):
 
     request = {
         'user_input': output_msg,
-        'max_new_tokens': 250,
+        'max_new_tokens': 1024,
         'auto_max_new_tokens': False,
         'max_tokens_second': 0,
         'history': history,
@@ -45,7 +45,7 @@ def pipeline(messages):
         # in presets/preset-name.yaml are used instead of the individual numbers.
         'preset': 'None',
         'do_sample': True,
-        'temperature': 0.2,
+        'temperature': 0,
         'top_p': 0.1,
         'typical_p': 1,
         'epsilon_cutoff': 0,  # In units of 1e-4
