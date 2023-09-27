@@ -1,4 +1,4 @@
-#OpenAI Local LLM Proxy
+# OpenAI Local LLM Proxy
 
 The goal of this project is to test existing projects on Github or you made yourself how they perform with other LLM's then the ones provided by OpenAI.
 
