@@ -42,4 +42,4 @@ fi
 
 #Add the Self-Signed Certificate to Trusted Certificates (Linux)
 sudo cp /etc/ssl/certs/nginx-selfsigned.crt /usr/local/share/ca-certificates/
-sudo update-ca-certificates
+sudo update-ca-certificatesS
